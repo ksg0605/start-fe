@@ -28,7 +28,8 @@ var log = function(str) {
 //console.log(count + number);
 // console.log('' == 0);
 
-console.log(typeof 1);
-console.log(typeof []);
-console.log(typeof '');
-console.log(typeof {});
+// console.log(typeof 1);
+// console.log(typeof []);
+// console.log(typeof '');
+// console.log(typeof {});
+
