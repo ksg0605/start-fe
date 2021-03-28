@@ -147,3 +147,4 @@ while (num) {
   sum += num
 }
 alert("숫자의 총 합은: " + sum);
+
