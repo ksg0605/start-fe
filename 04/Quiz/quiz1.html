@@ -28,57 +28,65 @@
           ,{"url":"http://media.daum.net/photo/3899","img":"http://icon.daumcdn.net/w/c/12/05/81728227037306839.jpeg","title":"생후 6개월에 프랑스로 입양됐던 아이가..","id":"20120516030614331"}
           ,{"url":"http://sports.media.daum.net/general/gallery/STARKIMYUNA/index.html","img":"http://icon.daumcdn.net/w/c/12/05/81727815537682839.jpeg","title":"&#39;교생&#39; 김연아, 스승의날에도 인기폭발","id":"20120516092003892"}
       ];
-
-      var numList = 3;
-      var nPage = 1;
-      var nTotalPage = Math.floor(todayPhoto.length / numList + 1);
-
+      
+      // 개수, 페이지, 전체 페이지 변수 선언
+      var numOfList = 3;
+      var numOfPage = 1;
+      var numOfTotalPage = Math.ceil(todayPhoto.length / numOfList );
+      
+      // dom 관리
       var wrap = document.getElementById('wrap');
       var btnPrev = document.querySelector('.btnPrev');
       var btnNext = document.querySelector('.btnNext');
       var page = document.querySelector('.page');
       var totalPage = document.querySelector('.totalPage');
 
+      // prev 버튼 함수
       function prev() {
-        if (nPage === 1) {
+        if (numOfPage === 1) { // 첫번째 페이지일때
           return;
         }
-        else {
-          nPage --;
-          carousel(nPage);
+        else { // 2 ~ 마지막일때
+          numOfPage --;
+          carousel(numOfPage);
         }
       }
 
+      // next 버튼 함수
       function next() {
-        if (nPage === nTotalPage) {
+        if (numOfPage === numOfTotalPage) { // 마지막 페이지일때
           return;
         }
-        else {
-          nPage ++;
-          carousel(nPage);
+        else { // 1 ~ total - 1 페이지일때
+          numOfPage ++;
+          carousel(numOfPage);
         }
       }
 
-      function getIndex(nPage) {
-        var index = (nPage - 1) * numList;
+      // 첫번째 인덱스를 가져오는 함수
+      function getIndex(numOfPage) {
+        var index = (numOfPage - 1) * numOfList;
         return index; 
       }
 
-      function carousel(nPage) {
-        var index = getIndex(nPage);
+      // carousel을 보여주는 함수
+      function carousel(numOfPage) {
+        var index = getIndex(numOfPage);
         var str = '';
-        for(var i=index; i<numList + index; i++){
+        for(var i=index; i<numOfList + index; i++){
           if (todayPhoto[i]){
             str += '<img src="'+todayPhoto[i].img+'"> ';
           }
         }
         wrap.innerHTML = str;
-        page.innerHTML = nPage;
-        totalPage.innerHTML = nTotalPage;
+        page.innerHTML = numOfPage;
+        totalPage.innerHTML = numOfTotalPage;
       }
 
-    carousel(nPage);
+    // 함수 호출
+    carousel(numOfPage);
 
+    // 버튼에 클릭이벤트 추가
     btnPrev.addEventListener('click', prev);
     btnNext.addEventListener('click', next);
 
