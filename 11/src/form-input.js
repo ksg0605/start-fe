@@ -10,6 +10,7 @@ function init(data) {
 
     const text = $input.value;
     $input.value = '';
+    if (!text) return;
 
     data.push({
       ...todoModel,
