@@ -1,5 +1,11 @@
-import "./todos.css";
+import { render } from './html-render';
+import formInput from './form-input';
 
-const $inputForm = document.querySelector("#input-form");
-const $input = document.querySelector("#input");
-const $result = document.querySelector("#result");
+import './todos.css';
+
+const $result = document.querySelector('#result');
+
+const todos = [];
+
+formInput.init(todos);
+render(todos);
